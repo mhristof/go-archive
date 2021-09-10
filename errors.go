@@ -3,7 +3,11 @@ package main
 import "github.com/pkg/errors"
 
 var (
-	ErrorFileNotFound       = errors.New("file not found")
+	// ErrorFileNotFound Error returned when the file requested is not found
+	// in the archive.
+	ErrorFileNotFound = errors.New("file not found")
+	// ErrorUnsupportedArchive Error when the archive type is not supported.
 	ErrorUnsupportedArchive = errors.New("archive type not supported")
-	ErrorDownload           = errors.New("cannot download file")
+	// ErrorDownload Error when there was an error while downloading the file.
+	ErrorDownload = errors.New("cannot download file")
 )

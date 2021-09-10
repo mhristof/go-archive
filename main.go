@@ -16,10 +16,12 @@ import (
 	"github.com/pkg/errors"
 )
 
+// Archive The archive type.
 type Archive struct {
 	URL string
 }
 
+// NewURL Create a new archive type from the given URL.
 func NewURL(URL string) *Archive {
 	return &Archive{
 		URL: URL,
@@ -74,7 +76,7 @@ func extractTar(data []byte, name string) ([]byte, error) {
 
 	tarReader := tar.NewReader(uncompressed)
 
-	for true {
+	for {
 		header, err := tarReader.Next()
 
 		if err == io.EOF {
@@ -114,7 +116,7 @@ func extractTar(data []byte, name string) ([]byte, error) {
 func stripDir(path string) string {
 	fields := strings.Split(path, "/")
 
-	return filepath.Join(fields[1:len(fields)]...)
+	return filepath.Join(fields[1:]...)
 }
 
 func wget(URL string) ([]byte, error) {
