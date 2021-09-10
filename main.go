@@ -20,6 +20,12 @@ type Archive struct {
 	URL string
 }
 
+func NewURL(URL string) *Archive {
+	return &Archive{
+		URL: URL,
+	}
+}
+
 // ExtractFile Returns the bytes of the file with `name` from the archive.
 func (a *Archive) ExtractFile(name string) ([]byte, error) {
 	r, err := wget(a.URL)

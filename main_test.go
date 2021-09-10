@@ -63,9 +63,11 @@ func TestExtractFile(t *testing.T) {
 		test := test
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
-			fmt.Println(fmt.Sprintf("test.archive: %+v", test.archive))
+
 			data, err := test.archive.ExtractFile(test.file)
+
 			assert.ErrorIs(t, test.err, err, test.name)
+
 			h := sha256.New()
 			h.Write(data)
 			assert.Equal(t, test.sha256, fmt.Sprintf("%x", h.Sum(nil)), test.name)
