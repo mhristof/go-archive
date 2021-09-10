@@ -1,4 +1,4 @@
-package main
+package archive
 
 import "github.com/pkg/errors"
 

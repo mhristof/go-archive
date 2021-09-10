@@ -1,4 +1,4 @@
-package main
+package archive
 
 import (
 	"archive/tar"
@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"path/filepath"
 	"strings"
@@ -96,8 +95,6 @@ func extractTar(data []byte, name string) ([]byte, error) {
 			}
 
 			file, err := ioutil.ReadAll(tarReader)
-
-			log.Println("found", header.Name)
 
 			return file, err
 		default:
